@@ -50,7 +50,7 @@ export function ProjectList() {
                             key={category}
                             variant={filter === category ? "default" : "outline"}
                             onClick={() => handleFilter(category)}
-                            size="sm"
+                            size="lg"
                         >
                             {category}
                         </Button>
