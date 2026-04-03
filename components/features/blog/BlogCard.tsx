@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { BLOG_CATEGORIES, BlogPost } from "@/constants/blog";
 import { CalendarDays, User } from "lucide-react";
 import Image from "next/image";

@@ -1,8 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
-import { File } from "lucide-react";
 import { Section } from "@/components/common/Section";
-import { Button } from "@/components/ui/button";
 
 export function Introduction() {
     return (

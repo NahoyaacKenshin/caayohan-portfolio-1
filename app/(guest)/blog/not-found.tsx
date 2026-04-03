@@ -7,7 +7,7 @@ export default function BlogNotFound() {
     <Section className="min-h-screen flex flex-col items-center justify-center text-center space-y-4">
       <p className="text-5xl font-semibold tracking-tight">404</p>
       <p className="text-muted-foreground text-sm">
-        This post or category doesn't exist.
+        This post or category doesn&apos;t exist.
       </p>
       <Link href="/blog">
         <Button variant="outline" size="sm">Back to Blog</Button>

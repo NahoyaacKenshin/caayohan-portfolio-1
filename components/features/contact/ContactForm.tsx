@@ -101,7 +101,7 @@ export function ContactForm() {
                     <Card className="w-full">
                         <CardHeader>
                             <CardTitle>Send A Message</CardTitle>
-                            <CardDescription>Fill out the form below and I'll get back to you.</CardDescription>
+                            <CardDescription>Fill out the form below and I&apos;ll get back to you.</CardDescription>
                         </CardHeader>
                         <CardContent>
                             <form id="contact-form" onSubmit={form.handleSubmit(onSubmit)}>
