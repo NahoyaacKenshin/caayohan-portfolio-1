@@ -8,7 +8,7 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-export function generateStaticParams() {
+export function generateStaticParams() {    
   return BLOG_POSTS.map((post) => ({ slug: post.slug }));
 }
 
