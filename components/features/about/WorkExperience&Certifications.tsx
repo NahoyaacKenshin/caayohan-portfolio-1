@@ -31,11 +31,11 @@ export function WorkExperienceAndCertifications() {
   return (
     <div className="w-full bg-secondary">
       <Section className="container mx-auto px-5 md:px-10 space-y-16">
-        {/* Header */}
+ 
         <SectionHeading title="Experience & Credits" description="My professional journey and technical certifications." />
     
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Experience */}
+        
           <div className="space-y-8">
             <h3 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-primary">
               <Briefcase size={14} /> Professional Path
@@ -57,7 +57,6 @@ export function WorkExperienceAndCertifications() {
             </div>
           </div>
 
-          {/* Certifications */}
           <div className="space-y-8">
             <h3 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-primary">
               <Award size={14} /> Certifications
@@ -73,7 +72,6 @@ export function WorkExperienceAndCertifications() {
               ))}
             </div>
 
-            {/* Pagination */}
             {totalPages > 1 && (
               <div className="flex justify-center gap-3">
                 {[...Array(totalPages)].map((_, i) => (
