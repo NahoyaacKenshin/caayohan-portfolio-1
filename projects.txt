@@ -1,0 +1,45 @@
+title: Shop Page 
+category: Websites
+desc: 
+tags:
+image: https://imgur.com/xRoBH30
+links: React
+github: https://github.com/NahoyaacKenshin/AppsDev-MidtermProj
+demo: https://apps-dev-midterm-proj.vercel.app/
+
+
+title: Locafy
+category: Websites
+desc: 
+tags: Next.js, Express, TypeScript, Tailwind CSS    
+image: https://imgur.com/A0kCAKz
+links
+github: https://github.com/NahoyaacKenshin/front-end-system
+demo: https://locafy-g3.vercel.app/
+
+title: Portfolio
+category: Websites
+desc: 
+tags: React, Tailwind CSS
+image: https://imgur.com/AT4Zq2H
+links
+github: https://github.com/NahoyaacKenshin/kenji-os-v2
+demo: https://kenji-os-v2.vercel.app/
+
+title: CPU Scheduling Algorithm
+category: Websites
+desc: 
+tags: React, Tailwind CSS
+image: https://imgur.com/8tN7vnz
+links
+github: https://github.com/NahoyaacKenshin/os-fcfs
+demo: https://cpu-scheduling-fcfs.vercel.app/
+
+title: Product Cards
+category: Websites
+desc: 
+tags: React, Tailwind CSS
+image: https://imgur.com/a0oKZtX
+links
+github: https://github.com/NahoyaacKenshin/ProductCard-apps-dev
+demo: https://product-card-apps-dev.vercel.app/
