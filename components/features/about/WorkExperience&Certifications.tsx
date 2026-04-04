@@ -1,9 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { Section } from "@/components/common/Section";
-import { Briefcase, Award, Calendar, CheckCircle2 } from "lucide-react";
+import { Briefcase, Award, Calendar, CheckCircle2, ZoomIn } from "lucide-react";
 import { SectionHeading } from "@/components/common/SectionHeading";
+import { CERTIFICATIONS } from "@/constants/certifications";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const experiences = [
   {
@@ -14,28 +31,40 @@ const experiences = [
   }
 ];
 
-const certifications = [
-  "AWS Certified Developer", "Google UX Design", "Meta Frontend Developer",
-  "TypeScript Advanced", "Next.js Foundations", "Docker Essentials",
-  "REST API Development", "Node.js Backend", "Responsive Web Design",
-  "Git & Version Control", "Database Design", "Web Performance"
-];
-
-const ITEMS_PER_PAGE = 6;
-
 export function WorkExperienceAndCertifications() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const totalPages = Math.ceil(certifications.length / ITEMS_PER_PAGE);
-  const visibleCerts = certifications.slice(activeIndex * ITEMS_PER_PAGE, (activeIndex + 1) * ITEMS_PER_PAGE);
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+
+    const timer = setTimeout(() => {
+      setCount(api.scrollSnapList().length);
+      setCurrent(api.selectedScrollSnap());
+    }, 0);
+
+    const onSelect = () => {
+      setCurrent(api.selectedScrollSnap());
+    };
+
+    api.on("select", onSelect);
+
+    return () => {
+      clearTimeout(timer);
+      api.off("select", onSelect);
+    };
+  }, [api]);
 
   return (
     <div className="w-full bg-secondary">
       <Section className="container mx-auto px-5 md:px-10 space-y-16">
- 
-        <SectionHeading title="Experience & Credits" description="My professional journey and technical certifications." />
+        <SectionHeading 
+          title="Experience & Credits" 
+          description="My professional journey and technical certifications." 
+        />
     
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        
           <div className="space-y-8">
             <h3 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-primary">
               <Briefcase size={14} /> Professional Path
@@ -61,28 +90,78 @@ export function WorkExperienceAndCertifications() {
             <h3 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-primary">
               <Award size={14} /> Certifications
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {visibleCerts.map((cert, i) => (
-                <div key={i} className="group p-4 rounded-2xl bg-background border border-border hover:border-primary/40 hover:shadow-lg transition-all aspect-square flex flex-col justify-between">
-                  <CheckCircle2 className="text-primary/20 group-hover:text-primary transition-colors" size={20} />
-                  <span className="text-[11px] font-medium leading-snug text-muted-foreground group-hover:text-foreground transition-colors">
-                    {cert}
-                  </span>
-                </div>
+            
+            <Carousel setApi={setApi} className="w-full">
+              <CarouselContent>
+                {CERTIFICATIONS.map((cert, i) => (
+                  <CarouselItem key={i} className="sm:basis-1/2">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Card className="group cursor-pointer overflow-hidden rounded-[2rem] border-none bg-background shadow-sm hover:shadow-xl transition-all duration-500">
+                          <CardContent className="p-0 relative">
+                            <div className="absolute inset-0 z-10 bg-primary/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <ZoomIn className="text-primary-foreground h-10 w-10 p-2 bg-primary/60 rounded-full shadow-lg" />
+                            </div>
+                            <AspectRatio ratio={4 / 3} className="overflow-hidden">
+                              <Image 
+                                src={cert.img} 
+                                alt={cert.title}
+                                fill
+                                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                sizes="(max-width: 768px) 100vw, 33vw"
+                              />
+                            </AspectRatio>
+                            <div className="p-5">
+                              <div className="flex items-start gap-3 mb-1">
+                                <CheckCircle2 className="text-primary mt-1 shrink-0" size={16} />
+                                <span className="text-sm font-semibold leading-tight tracking-tight">
+                                  {cert.title}
+                                </span>
+                              </div>
+                              <p className="text-[10px] text-muted-foreground pl-7 uppercase tracking-wider font-bold">
+                                {cert.issuer}
+                              </p>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </DialogTrigger>
+
+                      <DialogContent className="max-w-[95vw] md:max-w-4xl max-h-[90vh] overflow-hidden rounded-[2.5rem] p-0 border-2 bg-background shadow-2xl">
+                        <DialogHeader className="p-6 border-b border-primary/10">
+                          <DialogTitle className="font-black text-2xl tracking-tighter">
+                            {cert.title}
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="p-2 md:p-4 w-full h-full flex items-center justify-center">
+                          <AspectRatio ratio={16 / 9} className="relative w-full h-full overflow-hidden rounded-2xl">
+                            <Image
+                              src={cert.img}
+                              alt={`Full size certificate for ${cert.title}`}
+                              fill
+                              className="object-contain"
+                              sizes="90vw"
+                            />
+                          </AspectRatio>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+
+            <div className="flex justify-center gap-2 mt-6">
+              {Array.from({ length: count }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => api?.scrollTo(i)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    i === current ? "w-8 bg-primary" : "w-2 bg-primary/20 hover:bg-primary/40"
+                  }`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
               ))}
             </div>
-
-            {totalPages > 1 && (
-              <div className="flex justify-center gap-3">
-                {[...Array(totalPages)].map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveIndex(i)}
-                    className={`h-1.5 rounded-full transition-all ${i === activeIndex ? "w-8 bg-primary" : "w-2 bg-muted-foreground/20 hover:bg-muted-foreground/40"}`}
-                  />
-                ))}
-              </div>
-            )}
           </div>
         </div>
       </Section>

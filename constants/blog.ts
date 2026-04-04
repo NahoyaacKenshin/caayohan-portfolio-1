@@ -33,7 +33,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "A ground-up walkthrough of how Rust's ownership model actually works — and why it matters.",
     content: "Rust's ownership system is the cornerstone of its memory safety guarantees. Rather than a garbage collector, Rust enforces strict rules at compile time: every value has a single owner, and when that owner goes out of scope, the value is dropped. This post walks through ownership, borrowing, and lifetimes with concrete examples.",
     category: ["tech", "rust"],
-    date: "2025-03-04",
+    date: "2020-03-04",
     author: "Maren Solvik",
   },
   {
@@ -44,7 +44,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "TypeScript 4.9 shipped a quiet gem. Here's when and why to reach for it.",
     content: "The satisfies operator lets you validate that an expression matches a type without widening the inferred type. It's a subtle distinction, but one that unlocks much tighter inference in config objects, theme tokens, and route maps. This post shows the before and after.",
     category: ["tech", "typescript"],
-    date: "2025-03-10",
+    date: "2020-10-10",
     author: "Lior Ben-David",
   },
   {
@@ -55,7 +55,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "How modern variable fonts adapt letterforms across sizes — and how to use it in CSS.",
     content: "Variable fonts expose axes like weight, width, and optical size via font-variation-settings. The opsz axis in particular adjusts stroke contrast and spacing as type scales up or down, mimicking what metal type foundries did by hand for centuries. Here's how to wire it up properly.",
     category: ["design", "craft"],
-    date: "2025-03-15",
+    date: "2021-02-15",
     author: "Yuki Ashida",
   },
   {
@@ -66,7 +66,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "A pragmatic argument for releasing rough edges — and what to polish later.",
     content: "The pursuit of perfection before launch is a form of procrastination dressed up as diligence. This post argues for a tiered model: identify the two or three things that must feel complete, ship everything else at 80%, and iterate in public. The feedback loop is the product.",
     category: ["craft"],
-    date: "2025-03-18",
+    date: "2022-11-18",
     author: "Maren Solvik",
   },
   {
@@ -77,7 +77,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "Subgrid is now baseline. Here's what it solves and how to use it today.",
     content: "CSS subgrid allows a grid item's children to participate in the parent grid's track sizing. This solves the long-standing problem of aligning content across sibling cards without JavaScript measurement hacks. Browser support crossed the baseline threshold in late 2024, making it production-ready.",
     category: ["design", "tech"],
-    date: "2025-03-22",
+    date: "2023-10-22",
     author: "Lior Ben-David",
   },
   {
@@ -88,7 +88,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "Why the act of writing a post — even a short one — sharpens how you understand your own work.",
     content: "Writing forces you to confront what you actually understand versus what you vaguely recognize. When you can't explain something in prose, that's a signal, not a stylistic problem. This post is about building a writing habit not for an audience, but for yourself.",
     category: ["craft"],
-    date: "2025-03-25",
+    date: "2024-03-25",
     author: "Yuki Ashida",
   },
 ];
