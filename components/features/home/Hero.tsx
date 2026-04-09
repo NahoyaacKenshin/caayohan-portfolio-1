@@ -35,7 +35,7 @@ export function Hero() {
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <Link href="/about" className="w-full sm:w-auto">
+                            <Link href="/projects" className="w-full sm:w-auto">
                                 <Button size="lg" className="group w-full h-14 px-8 text-base rounded-xl">
                                     View My Work
                                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
